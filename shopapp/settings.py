@@ -23,8 +23,12 @@ ALLOWED_HOSTS = [
     'localhost',
     'web-production-8c31b.up.railway.app'
 ]
-CSRF_TRUSTED_ORIGINS = 'https://web-production-8c31b.up.railway.app'
-CORS_ALLOWED_ORIGINS = 'https://web-production-8c31b.up.railway.app'
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-8c31b.up.railway.app',
+]
+CORS_ALLOWED_ORIGINS = [
+    'https://web-production-8c31b.up.railway.app',
+]
 
 # Application definition
 
@@ -81,7 +85,11 @@ WSGI_APPLICATION = 'shopapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
