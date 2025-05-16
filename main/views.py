@@ -6,7 +6,11 @@ from rest_framework.generics import RetrieveAPIView
 
 from .serializers import ItemSerializer, OrderSerializer
 from .models import Item
+from django.views.generic import TemplateView
 
+
+class FrontendAppView(TemplateView):
+    template_name = "index.html"
 
 
 class ItemDetail(RetrieveAPIView):
