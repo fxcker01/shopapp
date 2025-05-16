@@ -58,7 +58,7 @@ export default {
     methods: {
       async fetchItems(page = 1) {
         try {
-          const res = await axios.get(`http://127.0.0.1:8000/api/items/?page=${page}`);
+          const res = await axios.get(`/api/items/?page=${page}`);
           this.items = res.data.results;
           this.totalPages = Math.ceil(res.data.count / this.pageSize);
           this.currentPage = page;

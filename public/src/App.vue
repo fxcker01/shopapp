@@ -149,7 +149,7 @@ export default {
       const refresh = localStorage.getItem("refresh");
       if (!token || !refresh) return;
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
+        const res = await fetch("/api/token/refresh/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ refresh })
@@ -165,7 +165,7 @@ export default {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/profile/", {
+        const res = await fetch("/api/profile/", {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();

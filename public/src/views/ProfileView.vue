@@ -49,7 +49,7 @@ export default {
         return;
       }
 
-      const response = await axios.get("http://127.0.0.1:8000/api/profile/", {
+      const response = await axios.get("/api/profile/", {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -64,7 +64,7 @@ export default {
     async saveProfile() {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.put("http://127.0.0.1:8000/api/profile/", this.form, {
+        const response = await axios.put("/api/profile/", this.form, {
           headers: { Authorization: `Bearer ${token}` }
         });
 

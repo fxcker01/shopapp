@@ -67,7 +67,7 @@ export default {
   async mounted() {
     const slug = this.$route.params.slug;
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/item/${slug}/`);
+      const res = await axios.get(`/api/item/${slug}/`);
       this.item = res.data;
       this.activeImage = res.data.image;
 

@@ -96,7 +96,7 @@ export default {
           address: this.address
         };
 
-        const res = await axios.post("http://127.0.0.1:8000/api/order-add/", data, {
+        const res = await axios.post("/api/order-add/", data, {
           headers: { "Content-Type": "application/json" }
         });
 

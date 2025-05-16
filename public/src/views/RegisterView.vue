@@ -30,7 +30,7 @@
         const toast = useToast();
 
         try {
-          const response = await axios.post("http://127.0.0.1:8000/api/register/", {
+          const response = await axios.post("/api/register/", {
             username: this.username,
             email: this.email,
             password: this.password
