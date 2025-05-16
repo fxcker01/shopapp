@@ -18,9 +18,13 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'unsafe-dev-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173').split(',')
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'web-production-8c31b.up.railway.app'
+]
+CSRF_TRUSTED_ORIGINS = 'https://web-production-8c31b.up.railway.app'
+CORS_ALLOWED_ORIGINS = 'https://web-production-8c31b.up.railway.app'
 
 # Application definition
 
