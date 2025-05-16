@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
@@ -169,5 +169,7 @@ CSRF_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
 SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 
-TEMPLATES[0]['DIRS'] = [BASE_DIR / "dist"]
-STATICFILES_DIRS = [BASE_DIR / "dist/assets"]
+STATIC_URL = '/assets/'
+STATICFILES_DIRS = [BASE_DIR / "frontend/dist/assets"]
+
+TEMPLATES[0]['DIRS'] = [BASE_DIR / "frontend/dist"]
