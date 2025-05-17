@@ -1,22 +1,30 @@
-from rest_framework.routers import SimpleRouter
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include, re_path
+from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
+import os
 
-from .views import ItemsPage, OrderAdd, ItemDetail
-from .views_auth import register, login_view, user_profile
-from rest_framework_simplejwt.views import TokenRefreshView
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/", include("main.urls")),
 
-router = SimpleRouter()
-router.register(r'items', ItemsPage)
+    # 👉 Правильна обробка медіа (фото товарів)
+    re_path(r'^pictures/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT
+    }),
 
-urlpatterns = router.urls + [  # Додано router.urls сюди
-    path('register/', register, name='register'),
-    path('login/', login_view, name='login'),
-    path('profile/', user_profile, name='profile'),
-    path('item/<slug:slug>/', ItemDetail.as_view(), name='item-detail'),
-    path('order-add/', OrderAdd.as_view(), name='order_add'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # 👉 Статичні ресурси Vue
+    re_path(r'^img/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(settings.BASE_DIR, 'frontend/dist/img')
+    }),
+    re_path(r'^assets/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(settings.BASE_DIR, 'frontend/dist/assets')
+    }),
+
+    # 👉 SPA має бути останнім, і не перехоплювати інші шляхи
+    re_path(r'^(?!api|admin|pictures|img|assets).*$', TemplateView.as_view(template_name="index.html")),
 ]
 
 if settings.DEBUG:
