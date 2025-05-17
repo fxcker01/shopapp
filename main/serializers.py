@@ -32,6 +32,13 @@ class ItemImageSerializer(serializers.ModelSerializer):
         model = ItemImage
         fields = ['image', 'is_main']
 
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if request and hasattr(obj.image, 'url'):
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url if hasattr(obj.image, 'url') else None
+
+
 class ItemSerializer(serializers.ModelSerializer):
     images = ItemImageSerializer(many=True, read_only=True)
 
