@@ -6,7 +6,7 @@ from rest_framework import serializers
 
 
 class UserProfileSerializer(ModelSerializer):
-    discount_notifications = serializers.BooleanField(source='profile.discount_notifications')  # ✅ виправлено
+    discount_notifications = serializers.BooleanField(source='profile.discount_notifications')
 
     class Meta:
         model = User
@@ -28,9 +28,17 @@ class UserProfileSerializer(ModelSerializer):
         return instance
 
 class ItemImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = ItemImage
         fields = ['image', 'is_main']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url
 
 class ItemSerializer(serializers.ModelSerializer):
     images = ItemImageSerializer(many=True, read_only=True)

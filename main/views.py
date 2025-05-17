@@ -18,6 +18,10 @@ class ItemDetail(RetrieveAPIView):
     serializer_class = ItemSerializer
     lookup_field = 'slug'
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, context={'request': request})
+        return Response(serializer.data)
 
 
 class ItemsPage(ModelViewSet):

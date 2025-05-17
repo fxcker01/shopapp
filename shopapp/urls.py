@@ -4,19 +4,23 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+import os
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("main.urls")),  # або інший app/api
+    path("api/", include("main.urls")),
 
-    # Для медіа (зображення товарів)
+    # Для зображень товарів (медіа з бази)
     re_path(r'^pictures/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
-    # Для Vue-статичних файлів (js, css)
-    re_path(r'^assets/(?P<path>.*)$', serve, {'document_root': settings.BASE_DIR / 'frontend/dist/assets'}),
+    # Для зображень з public/img → dist/img (Vue)
+    re_path(r'^img/(?P<path>.*)$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'frontend/dist/img')}),
 
-    # Усі інші шляхи → index.html (Vue SPA)
-    re_path(r'^(?!api|admin|pictures|assets).*$', TemplateView.as_view(template_name="index.html")),
+    # Для Vue-скриптів і стилів
+    re_path(r'^assets/(?P<path>.*)$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'frontend/dist/assets')}),
+
+    # Для всіх інших SPA маршрутів
+    re_path(r'^(?!api|admin|pictures|assets|img).*$', TemplateView.as_view(template_name="index.html")),
 ]
 
 if settings.DEBUG:

@@ -181,3 +181,5 @@ STATIC_URL = '/assets/'
 STATICFILES_DIRS = [BASE_DIR / "frontend/dist/assets"]
 
 TEMPLATES[0]['DIRS'] = [BASE_DIR / "frontend/dist"]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
