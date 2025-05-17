@@ -65,7 +65,7 @@ ROOT_URLCONF = 'shopapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "frontend/dist"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -179,7 +179,5 @@ SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = [BASE_DIR / "frontend/dist/assets"]
-
-TEMPLATES[0]['DIRS'] = [BASE_DIR / "frontend/dist"]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
