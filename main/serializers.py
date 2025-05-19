@@ -28,6 +28,8 @@ class UserProfileSerializer(ModelSerializer):
         return instance
 
 class ItemImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()  # ← це обов’язково!
+
     class Meta:
         model = ItemImage
         fields = ['image', 'is_main']
@@ -36,7 +38,7 @@ class ItemImageSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if request and hasattr(obj.image, 'url'):
             return request.build_absolute_uri(obj.image.url)
-        return obj.image.url if hasattr(obj.image, 'url') else None
+        return obj.image.url
 
 
 class ItemSerializer(serializers.ModelSerializer):

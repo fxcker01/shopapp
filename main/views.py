@@ -28,6 +28,9 @@ class ItemsPage(ModelViewSet):
     queryset = Item.objects.all().order_by('-id')
     serializer_class = ItemSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
+
 class OrderAdd(APIView):
     def post(self, request):
         print("Отримано запит:", request.data)  # Логування
