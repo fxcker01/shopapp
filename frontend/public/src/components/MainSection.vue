@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <img src="/img/main-image.svg" alt="">
-        <div>
+        <div class="main-text">
             <img src="/img/asterics.svg" alt="">
             <h1>Shop</h1>
             <h2>online</h2>
@@ -19,13 +19,16 @@ export default {}
 <style scoped>
 .wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 100px;
 }
 
+.main-text {
+  margin-left: 100px;
+}
+
 .wrapper > div {
-    margin-left: 50px;
     color: #373845;
 }
 
@@ -43,9 +46,9 @@ export default {}
 .wrapper > div h3 {color: #5CDDBC;}
 
 .wrapper > div p {
-    font-size: 18px;
-    max-width: 500px;
-    margin: 20px 0;
+  font-size: 18px;
+  max-width: 500px;
+  margin: 20px 0;
 } 
 
 .wrapper > div button {
@@ -63,6 +66,9 @@ export default {}
     transform: translateY(-5px);
 }
 
+
+
+
 @media (max-width: 1024px) {
   .wrapper {
     flex-direction: column;
@@ -74,7 +80,6 @@ export default {}
 
   .wrapper > div {
     margin-left: 0;
-    width: 100%;
   }
 
   .wrapper > div img {
@@ -102,6 +107,7 @@ export default {}
     font-size: 17px;
     margin: 20px 0;
     width: 100%;
+    text-align: center;
   }
 
   .wrapper > div button {
@@ -130,7 +136,6 @@ export default {}
 
   .wrapper > div {
     margin-left: 0;
-    width: 100%;
   }
 
   .wrapper > div img {

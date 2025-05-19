@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="app-wrapper">
     <Header
       :basket="basket"
       :username="username"
@@ -9,8 +9,7 @@
       @clearBasket="clearBasket"
       @logout="handleLogout"
     />
-
-
+    <div class="container">
     <RouterView
       :basket="basket"
       :addToBasket="addToBasket"
@@ -32,15 +31,18 @@
       {{ basketMessage }}
     </div>
   </div>
+  <Footer />
+  </div>
 </template>
 
 <script>
 import { RouterView } from 'vue-router';
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 import { useToast } from 'vue-toastification';
 
 export default {
-  components: { Header },
+  components: { Header, Footer },
   data() {
     return {
       basket: [],
@@ -254,5 +256,29 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   transition: opacity 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .cookie-notice {
+    width: 85%;
+    font-size: 13px;
+    line-height: 1.4;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .cookie-notice p {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cookie-notice button {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
 }
 </style>

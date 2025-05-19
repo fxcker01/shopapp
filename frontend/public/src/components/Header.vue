@@ -1,6 +1,7 @@
 <template>
   <header>
-    <RouterLink to="/">
+    <div class="header-inner">
+      <RouterLink to="/">
       <img src="/img/logo.svg" alt="Логотип" />
     </RouterLink>
 
@@ -100,6 +101,7 @@
           <button class="checkout-btn">Перейти до оплати</button>
         </RouterLink>
       </div>
+    </div>
     </div>
   </header>
 </template>
@@ -206,17 +208,24 @@ export default {
 
 <style scoped>
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 30px 0;
-  flex-wrap: wrap;
+  width: 100%;
   background-color: #fff;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e0e0e0;
 }
 header img {
   height: 40px;
 }
+
+.header-inner {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 5%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 ul {
   list-style: none;
   display: flex;
@@ -446,6 +455,9 @@ ul li a:hover {
 @media (max-width: 768px) {
   ul, .auth-buttons {
     display: none;
+  }
+  header img {
+    height: 37px;
   }
   .burger {
     display: block;
