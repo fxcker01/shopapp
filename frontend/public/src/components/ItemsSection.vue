@@ -46,7 +46,7 @@ export default {
     props: ['addToBasket'],
     data() {
         return {
-          pageSize: 6,
+          pageSize: 12,
           items: [],
           currentPage: 1,
           totalPages: 1,
