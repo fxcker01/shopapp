@@ -10,7 +10,7 @@ class UserProfile(models.Model):
 
 
 class Item(models.Model):
-    slug = models.SlugField('Уникальна назва', unique=True)
+    slug = models.SlugField('Унікальна назва', unique=True)
     title = models.CharField('Назва товару', max_length=200)
     image = models.ImageField('Основне фото', upload_to='items/', blank=True, null=True)
     desc = models.TextField('Опис товару')
@@ -41,7 +41,7 @@ class Order(models.Model):
     email = models.CharField('Email', max_length=200)
     phone = models.CharField('Телефон', max_length=200)
     delivery_method = models.CharField('Спосіб доставки', max_length=20, choices=DELIVERY_CHOICES, default='courier')
-    address = models.CharField('Адреса', max_length=255)
+    address = models.CharField('Адреса доставки', max_length=255)
     basket = models.JSONField('Кошик', default=list)
 
     def __str__(self):
