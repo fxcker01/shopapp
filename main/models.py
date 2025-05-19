@@ -10,22 +10,22 @@ class UserProfile(models.Model):
 
 
 class Item(models.Model):
-    slug = models.SlugField('Уникальное название', unique=True)
-    title = models.CharField('Название товара', max_length=200)
+    slug = models.SlugField('Уникальна назва', unique=True)
+    title = models.CharField('Назва товару', max_length=200)
     image = models.ImageField('Основне фото', upload_to='items/', blank=True, null=True)
-    desc = models.TextField('Описание товара')
-    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
+    desc = models.TextField('Опис товару')
+    price = models.DecimalField('Ціна', max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.title
 
 class ItemImage(models.Model):
     item = models.ForeignKey(Item, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField('Дополнительное фото', upload_to='items/')
-    is_main = models.BooleanField('Основное изображение', default=False)
+    image = models.ImageField('Додаткове фото', upload_to='items/')
+    is_main = models.BooleanField('Основне зображення', default=False)
 
     def __str__(self):
-        return f"{self.item.title} - {'Главное' if self.is_main else 'Другое'}"
+        return f"{self.item.title} - {'Головне' if self.is_main else 'Інше'}"
 
 
 

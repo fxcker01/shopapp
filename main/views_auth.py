@@ -8,7 +8,6 @@ from .serializers import UserProfileSerializer
 
 
 def get_tokens_for_user(user):
-    """Генерує JWT токени для користувача"""
     refresh = RefreshToken.for_user(user)
     return {
         'refresh': str(refresh),
@@ -19,7 +18,6 @@ def get_tokens_for_user(user):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
-    """ Реєстрація нового користувача """
     data = json.loads(request.body)
     username = data.get('username')
     email = data.get('email')
@@ -39,7 +37,6 @@ def register(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login_view(request):
-    """ Авторизація користувача """
     data = json.loads(request.body)
     username = data.get('username')
     password = data.get('password')
@@ -54,7 +51,6 @@ def login_view(request):
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
 def user_profile(request):
-    """Отримання та редагування інформації про користувача."""
     user = request.user
 
     if request.method == 'GET':

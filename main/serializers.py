@@ -28,7 +28,7 @@ class UserProfileSerializer(ModelSerializer):
         return instance
 
 class ItemImageSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()  # ← це обов’язково!
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = ItemImage
