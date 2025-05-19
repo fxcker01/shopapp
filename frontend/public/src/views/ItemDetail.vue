@@ -261,13 +261,16 @@ button.go-basket:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   cursor: zoom-in;
+
+  background: rgba(0, 0, 0, 0.6);       
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .zoom-container {
@@ -287,6 +290,7 @@ button.go-basket:hover {
   user-select: none;
   cursor: grab;
   touch-action: none;
+  border-radius: 10px;
 }
 
 

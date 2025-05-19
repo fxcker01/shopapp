@@ -28,9 +28,6 @@ img {
     max-width: 100%;
 }
 
-.container {
-    padding: 0 5%;
-}
 
 .app-wrapper {
     display: flex;

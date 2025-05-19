@@ -210,8 +210,10 @@ export default {
 header {
   width: 100%;
   background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid #e0e0e0;
 }
+
 header img {
   height: 40px;
 }
@@ -345,11 +347,11 @@ ul li a:hover {
 .mobile-menu {
   position: absolute;
   top: 80px;
-  left: 0;
+  left: -5px;
   width: 100%;
   background: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
