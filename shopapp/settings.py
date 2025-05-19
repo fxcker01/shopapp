@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
@@ -167,7 +167,7 @@ LOGIN_URL = 'user'
 
 
 MEDIA_URL = '/pictures/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'backend/pictures')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
